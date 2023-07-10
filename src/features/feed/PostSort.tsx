@@ -90,6 +90,13 @@ export default function PostSort() {
         buttons={BUTTONS.map((b) => ({
           ...b,
           cssClass: b.data === "Top" ? "detail" : undefined,
+          text:
+            sort.startsWith("Top") && b.data === "Top"
+              ? b.text +
+                " (" +
+                formatTopLabel(sort as (typeof TOP_POST_SORTS)[number]) +
+                ")"
+              : b.text,
           role:
             sort === b.data || (sort.startsWith("Top") && b.data === "Top")
               ? "selected"
